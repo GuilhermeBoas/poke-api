@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const PosiçãoDoPapelDePareda = styled.video`
     position: fixed;
-    z-index: -1;
+    z-index: -5;
     bottom: 0;
     max-width: 100%;
     
@@ -22,7 +22,7 @@ const PapelDeParede = () => {
     return (
         <>
             <PosiçãoDoPapelDePareda autoPlay muted loop>
-                <source src='/gif/waterfall.mp4' type="video/mp4" />
+                <source src='/gif/city.mp4' type="video/mp4" />
             </PosiçãoDoPapelDePareda>
         </>)
 }

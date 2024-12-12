@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import Cabecalho from './componentes/Cabecalho'
 import EstilosGlobais from './componentes/EstilosGlobais'
-import Main from './componentes/Main'
 import PapelDeParede from './componentes/PapelDeParede'
-import Pokemon from './componentes/Pokemon'
+import Card from './componentes/Card'
 
 const ContainerPrincipal = styled.div`
   position: relative;
 `
-
+const MainApp = styled.main`
+  display: flex;
+  flex-direction: column;
+`
 function App() {
 
 
@@ -17,14 +19,18 @@ function App() {
       <EstilosGlobais />
       <ContainerPrincipal>
         <PapelDeParede/>
-        
         <Cabecalho />
-        <Pokemon/>
-        <Main/>
         
+        <MainApp>
+          <input style={{margin:'0 auto'}} type="text"/>
+          
+          <Card/>
+        </MainApp>
+        
+        {/* <BotaoFundo/> */}
       </ContainerPrincipal>
     </>
   )
 }
-
+// erro no @import da font  popiins no global, ver depois
 export default App
