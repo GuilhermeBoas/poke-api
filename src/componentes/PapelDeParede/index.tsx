@@ -13,18 +13,27 @@ const PosiçãoDoPapelDePareda = styled.video`
         height: 100%;
         text-align: center;
     }
-   
-    
+`
+const ContainerWallpaper = styled.div`
+    .hidden{
+        display: none;
+    }
 `
 //video ja ficar estatico alinhado com o vh, falta fazer reposividade do video e escolha
 
 const PapelDeParede = () => {
     return (
-        <>
-            <PosiçãoDoPapelDePareda autoPlay muted loop>
+        <ContainerWallpaper>  
+            <PosiçãoDoPapelDePareda className="hidden" autoPlay muted loop>
+                <source src='/gif/god.mp4' type="video/mp4" />
+            </PosiçãoDoPapelDePareda>
+            <PosiçãoDoPapelDePareda className="hidden" autoPlay muted loop>
                 <source src='/gif/city.mp4' type="video/mp4" />
             </PosiçãoDoPapelDePareda>
-        </>)
+            <PosiçãoDoPapelDePareda autoPlay muted loop>
+                <source src='/gif/waterfall.mp4' type="video/mp4" />
+            </PosiçãoDoPapelDePareda>
+        </ContainerWallpaper>)
 }
 
 export default PapelDeParede

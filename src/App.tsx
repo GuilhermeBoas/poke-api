@@ -3,6 +3,7 @@ import Cabecalho from './componentes/Cabecalho'
 import EstilosGlobais from './componentes/EstilosGlobais'
 import PapelDeParede from './componentes/PapelDeParede'
 import Card from './componentes/Card'
+import BotaoFundo from './componentes/BotaoFundo'
 
 const ContainerPrincipal = styled.div`
   position: relative;
@@ -27,10 +28,12 @@ function App() {
           <Card/>
         </MainApp>
         
+        <BotaoFundo/>
         {/* <BotaoFundo/> */}
       </ContainerPrincipal>
     </>
   )
 }
 // erro no @import da font  popiins no global, ver depois
+// falta implementar funções que mudam o fundo, BotãoFundo estilizado
 export default App

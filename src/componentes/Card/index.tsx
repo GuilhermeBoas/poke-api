@@ -2,17 +2,17 @@ import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Info from "./Info"
 
-interface tipagemTipo{
-    slot:number,
-    type:{
-        name:string
+interface tipagemTipo {
+    slot: number,
+    type: {
+        name: string
     }
 
 }
-interface tipagemAbilitis{
-    slot:number,
-    ability:{
-        name:string
+interface tipagemAbilitis {
+    slot: number,
+    ability: {
+        name: string
     }
 }
 
@@ -21,8 +21,10 @@ interface tipagemDadosPokemon {
     imagem: string,
     tipo: tipagemTipo[],
     abilities: tipagemAbilitis[],
-    peso:number,
-    altura:number
+    peso: number,
+    altura: number,
+    descricao: string
+
 }
 
 const PokemonContainer = styled.figure`
@@ -34,10 +36,8 @@ const PokemonContainer = styled.figure`
     margin: 0 auto;
     text-align: center;
     z-index: 0;
-    padding:1em ;
+    padding: 0.8em ;
     border-radius: 10px;
-
-    
 `
 const ImgPoke = styled.img`
     width: 100%;
@@ -72,47 +72,58 @@ const Card = () => {
         nome: '',
         imagem: '',
         tipo: [],
-        abilities:[],
-        peso:0,
-        altura:0
+        abilities: [],
+        peso: 0,
+        altura: 0,
+        descricao: ''
+
 
     })
-    const aoMudarPokemon = (idDoPokemon: number | string) => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then(json => setPokemon({
-            ...pokemon,
-            nome: json.name,
-            imagem: json.sprites.other.dream_world.front_default,
-            tipo: json.types,
-            abilities: json.abilities,
-            peso:json.weight,
-            altura:json.height
 
-        }))
+
+    const aoMudarPokemon = (idDoPokemon: number | string) => {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then((json) => {
+            fetch(json.species.url).then(res => res.json()).then(speciesJson => setPokemon({
+                ...pokemon,
+                nome: json.name,
+                imagem: json.sprites.other.dream_world.front_default,
+                tipo: json.types,
+                abilities: json.abilities,
+                peso: json.weight,
+                altura: json.height,
+                descricao:  speciesJson.flavor_text_entries[0].flavor_text
+
+            }))
+        });
     }
-    useEffect(() => aoMudarPokemon(648), [])
+    // Solução: após fazer o .json() na response da api usar o json como o parametro e abrir uma arrow function com {} para usa-lo para fazer um novo fetch
     
-    console.log(pokemon)
-    //lembrar que a imagem do dream word so vai ate o n - 648
-    // trocar a chamada da Api ??
+    
+    useEffect(() => { aoMudarPokemon(1); }, [])
+
+    console.log(pokemon.descricao)
+
+    //pesquisar como funcionar 
     //1 - Criar um jeito de encaixar os dados em uma interface
     //2 - criar um const dentro do UseEfecct para armazenar os dados separados da feth API
     //3 - mudar a tipagem dos dados  dentro do useState <tipagem>()
 
     return (
-        
+
         <PokemonContainer>
-            <SemiCircle/>
-                 
+            <SemiCircle />
+            
             <h1>{pokemon.nome}</h1>
             <ImgPoke src={pokemon.imagem} />
             <Tags>
                 {pokemon.tipo.map((tipo) => <p key={tipo.slot}>{tipo.type.name}</p>)}
             </Tags>
 
-            <Info 
-            altura={pokemon.altura}
-            peso = {pokemon.peso}
-            abilities = {pokemon.abilities}
+            <Info
+                altura={pokemon.altura}
+                peso={pokemon.peso}
+                abilities={pokemon.abilities}
+                descricao={pokemon.descricao}
             />
         </PokemonContainer>
 

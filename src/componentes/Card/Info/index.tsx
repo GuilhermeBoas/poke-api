@@ -62,9 +62,10 @@ interface tipagemCard {
     altura:number,
     peso:number,
     abilities:tipagemAbilitis[]
+    descricao:string
 }
 
-const Info = ({altura,peso,abilities}:tipagemCard) => {
+const Info = ({altura,peso,abilities,descricao}:tipagemCard) => {
     return (
         <InfoEstilizada>
             <h2>About</h2>
@@ -101,9 +102,7 @@ const Info = ({altura,peso,abilities}:tipagemCard) => {
 
             {/* fazer usehook para descrição */}
 
-            <p>
-                It eats iron ore - and sometimes railroad tracks - to build up the steel armor that protects its body.
-            </p>
+            <p>{descricao}</p>
 
 
             {/* Criar componente separado para implementar os graficos 
