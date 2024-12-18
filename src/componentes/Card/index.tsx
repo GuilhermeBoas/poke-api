@@ -67,7 +67,7 @@ const Tags = styled.div`
     justify-content: center;
     gap: 1em;
 `
-const Card = () => {
+const Card = ({idPokemon,setIdPokemon}:{idPokemon:number|string,setIdPokemon:(value: React.SetStateAction<string | number>) => void}) => {
     const [pokemon, setPokemon] = useState<tipagemDadosPokemon>({
         nome: '',
         imagem: '',
@@ -79,10 +79,11 @@ const Card = () => {
 
 
     })
-
+// setar o idpokemon para a 'contagem' quando tiver a seta do pokemon para o lado
 
     const aoMudarPokemon = (idDoPokemon: number | string) => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then((json) => {
+            
             fetch(json.species.url).then(res => res.json()).then(speciesJson => setPokemon({
                 ...pokemon,
                 nome: json.name,
@@ -98,15 +99,11 @@ const Card = () => {
     }
     // Solução: após fazer o .json() na response da api usar o json como o parametro e abrir uma arrow function com {} para usa-lo para fazer um novo fetch
     
-    
-    useEffect(() => { aoMudarPokemon(1); }, [])
-
-    console.log(pokemon.descricao)
+    useEffect(() => { aoMudarPokemon(idPokemon); }, [idPokemon])
 
     //pesquisar como funcionar 
     //1 - Criar um jeito de encaixar os dados em uma interface
-    //2 - criar um const dentro do UseEfecct para armazenar os dados separados da feth API
-    //3 - mudar a tipagem dos dados  dentro do useState <tipagem>()
+    //2 - mudar a tipagem dos dados  dentro do useState <tipagem>()
 
     return (
 
@@ -124,10 +121,8 @@ const Card = () => {
                 peso={pokemon.peso}
                 abilities={pokemon.abilities}
                 descricao={pokemon.descricao}
-            />
+            /> 
         </PokemonContainer>
-
-
     )
 
 }

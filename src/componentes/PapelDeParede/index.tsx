@@ -21,18 +21,18 @@ const ContainerWallpaper = styled.div`
 `
 //video ja ficar estatico alinhado com o vh, falta fazer reposividade do video e escolha
 
-const PapelDeParede = () => {
+const PapelDeParede = ({ fundos,classEscolhida }: { fundos: string[],classEscolhida:string }) => {
     return (
-        <ContainerWallpaper>  
-            <PosiçãoDoPapelDePareda className="hidden" autoPlay muted loop>
-                <source src='/gif/god.mp4' type="video/mp4" />
-            </PosiçãoDoPapelDePareda>
-            <PosiçãoDoPapelDePareda className="hidden" autoPlay muted loop>
-                <source src='/gif/city.mp4' type="video/mp4" />
-            </PosiçãoDoPapelDePareda>
-            <PosiçãoDoPapelDePareda autoPlay muted loop>
-                <source src='/gif/waterfall.mp4' type="video/mp4" />
-            </PosiçãoDoPapelDePareda>
+        <ContainerWallpaper>
+
+            {fundos.map((titulo,index) => (
+                <PosiçãoDoPapelDePareda key={index} id={titulo} className={classEscolhida==titulo? '': 'hidden'} autoPlay muted loop>
+                    <source src={`/gif/${titulo}.mp4`} type="video/mp4" />
+                </PosiçãoDoPapelDePareda>
+            ))}
+
+
+
         </ContainerWallpaper>)
 }
 
