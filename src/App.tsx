@@ -6,6 +6,7 @@ import Card from './componentes/Card'
 import BotaoFundo from './componentes/BotaoFundo'
 import { useState } from 'react'
 
+// Styled Components
 const ContainerPrincipal = styled.div`
   position: relative;
 `
@@ -13,13 +14,11 @@ const MainApp = styled.main`
   display: flex;
   flex-direction: column;
 `
-
 const FormularioEstilizado = styled.form`
  margin: auto;
  width: 100%;
  max-width: 350px;
 `
-
 const InputPokemon = styled.input`
   margin: 12px auto;
   border-radius: 16px;
@@ -32,11 +31,11 @@ const InputPokemon = styled.input`
   text-align: center;
   &::placeholder{
     opacity: 1;
-    position: absolute;
     left: 6%;
   }
 `
 // botar um container para add o botão de submit 
+
 const referenciaFundo = [
   'God',
   'City',
@@ -77,11 +76,10 @@ function App() {
           </FormularioEstilizado>
 
           <Card setIdPokemon={e=>setIdPokemon(e)} idPokemon={idPokemon} />
-          {/* Falta so o card meu padrino - fazer tags de Tipo */}
-          {/* mudar cor do semi-Circulo para ser compativel com o tipo de pokemom */}
-          {/* Falta trabalhar com o local Storage */}
-          
-          {/* adicionar setas para trocar pokemon do lado*/}
+          {/* Falta trabalhar com o local Storage - colocar Id do pokemon para atulaizar automeatico com a seta para passar para o lado  */}
+          {/* Colocar Animações tbm*/}
+          {/* Importar as interfaces é mais simples que ficar escrevendo elas*/}
+          {/* responsividade*/}
         </MainApp>
 
         <BotaoFundo retornoAoClicar={(e)=>setfundo(e)} botoes={referenciaFundo} />

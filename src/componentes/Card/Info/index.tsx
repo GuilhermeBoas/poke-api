@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import tipagemAbilitis from '../../../interfaces-tipes';
 
 const InfoEstilizada = styled.figcaption`
     background-color: white;
@@ -6,14 +7,14 @@ const InfoEstilizada = styled.figcaption`
     border-radius: 10px;
     box-shadow: inset  0 0 5px #000;
     padding: 10px 7px;
-    h2{
-        margin: 0 0 10px 0 ;
-        color:#74CB48;
-        font-family: PoppinsBold;
-        font-size: 20px;
-    }
+    
 `
-
+const TituloEstilizado = styled.h2<Cor>`
+    margin: 0 0 10px 0 ;
+    color: ${({$cor})=> `var(--${$cor}-color)`} ;
+    font-family: PoppinsBold;
+    font-size: 20px;
+`
 const StatusFisicos = styled.div`
     display: flex;
     justify-content: center;
@@ -52,23 +53,22 @@ const DivisãoStatus = styled.div`
         flex-direction: column;
     }
 `
-interface tipagemAbilitis{
-    slot:number,
-    ability:{
-        name:string
-    }
-}
+
 interface tipagemCard {
     altura:number,
     peso:number,
     abilities:tipagemAbilitis[]
-    descricao:string
+    descricao:string,
+    cor:string
+}
+interface Cor{
+    $cor:string
 }
 
-const Info = ({altura,peso,abilities,descricao}:tipagemCard) => {
+const Info = ({altura,peso,abilities,descricao,cor}:tipagemCard) => {
     return (
         <InfoEstilizada>
-            <h2>About</h2>
+            <TituloEstilizado $cor={cor} >About</TituloEstilizado>
             <StatusFisicos>
 
                 <DivisãoStatus>
@@ -109,7 +109,7 @@ const Info = ({altura,peso,abilities,descricao}:tipagemCard) => {
             consulta os sites salvos de charts*/}
 
             <div>
-                <h2>Base Stats</h2>
+                <TituloEstilizado $cor={cor}>Base Stats</TituloEstilizado>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, error voluptatibus. Esse vel accusamus expedita id odio cupiditate, sed nulla ex non dolor porro placeat ipsa nostrum perspiciatis magni vitae.</p>
             </div>
         </InfoEstilizada>

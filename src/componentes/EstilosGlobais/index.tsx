@@ -12,7 +12,27 @@ const EstilosGlobais = createGlobalStyle`
     font-family: 'PoppinsBold';
     src: local('Poppins Bold'),local('PoppinsBold'), url(${PoppinsBold});
 }
-
+:root{
+    --bug-color:#A7B723;
+    --dark-color: #75574C;
+    --dragon-color:#7037FF;
+    --electric-color: #F9CF30;
+    --fairy-color:#E69EAC;
+    --fighting-color:#C12239;
+    --fire-color:#F57D31 ;
+    --flying-color:#A891EC;
+    --ghost-color: #70559B;
+    --normal-color: #AAA67F;
+    --grass-color: #74CB48;
+    --ground-color:#DEC16B;
+    --ice-color: #9AD6DF;
+    --poison-color: #A43E9E;
+    --psychic-color:#FB5584;
+    --rock-color: #B69E31;
+    --steel-color:#B7B9D0;
+    --water-color: #6493EB;
+    
+}
 
 html {
     line-height: 1.15; 
