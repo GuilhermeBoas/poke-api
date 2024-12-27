@@ -77,8 +77,7 @@ const Card = ({ idPokemon, setIdPokemon }: { idPokemon: number | string, setIdPo
 
 
     })
-    // setar o idpokemon para a 'contagem' quando tiver a seta do pokemon para o lado
-
+    
     const aoMudarPokemon = (idDoPokemon: number | string) => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then((json) => {
 
@@ -101,7 +100,7 @@ const Card = ({ idPokemon, setIdPokemon }: { idPokemon: number | string, setIdPo
 
     //pesquisar como funcionar 
     //1 - Criar um jeito de encaixar os dados em uma interface
-    //2 - mudar a tipagem dos dados  dentro do useState <tipagem>()
+    //2- setar o idpokemon para a 'contagem' quando tiver a seta do pokemon para o lado
 
     return (
 

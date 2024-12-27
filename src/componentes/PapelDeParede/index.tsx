@@ -26,9 +26,11 @@ const PapelDeParede = ({ fundos,classEscolhida }: { fundos: string[],classEscolh
         <ContainerWallpaper>
 
             {fundos.map((titulo,index) => (
+                
                 <PosiçãoDoPapelDePareda key={index} id={titulo} className={classEscolhida==titulo? '': 'hidden'} autoPlay muted loop>
                     <source src={`/gif/${titulo}.mp4`} type="video/mp4" />
                 </PosiçãoDoPapelDePareda>
+                
             ))}
 
 
