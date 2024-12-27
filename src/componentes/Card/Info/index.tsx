@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import tipagemAbilitis from '../../../interfaces-tipes';
+import Chart from "./Charts";
 
 const InfoEstilizada = styled.figcaption`
     background-color: white;
@@ -7,6 +8,9 @@ const InfoEstilizada = styled.figcaption`
     border-radius: 10px;
     box-shadow: inset  0 0 5px #000;
     padding: 10px 7px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     
 `
 const TituloEstilizado = styled.h2<Cor>`
@@ -28,12 +32,13 @@ const Status = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+    align-self: center;
 `
 const DivisãoStatus = styled.div`
     padding: 8px 10px 0 10px; 
     display:flex ;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     
     gap: 10px;
     width: 100%;
@@ -52,6 +57,11 @@ const DivisãoStatus = styled.div`
         display: flex;
         flex-direction: column;
     }
+`
+const ContainerGraficos= styled.div`
+    width: 100%;
+    height: 200px;
+   
 `
 
 interface tipagemCard {
@@ -108,10 +118,10 @@ const Info = ({altura,peso,abilities,descricao,cor}:tipagemCard) => {
             {/* Criar componente separado para implementar os graficos 
             consulta os sites salvos de charts*/}
 
-            <div>
+            <ContainerGraficos>
                 <TituloEstilizado $cor={cor}>Base Stats</TituloEstilizado>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, error voluptatibus. Esse vel accusamus expedita id odio cupiditate, sed nulla ex non dolor porro placeat ipsa nostrum perspiciatis magni vitae.</p>
-            </div>
+                <Chart cor={cor}/>
+            </ContainerGraficos>
         </InfoEstilizada>
     )
 }

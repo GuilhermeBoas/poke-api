@@ -1,7 +1,5 @@
 import { useState } from "react"
 import styled from "styled-components"
-
-
 const MenuContainer = styled.div`
     position: absolute;
     bottom: 0;
@@ -57,7 +55,7 @@ const BotaoMenuEstilizado = styled.button`
     background-image: linear-gradient(to bottom, #D43B47,#A92F3A);
     border: none;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 10px;   
     cursor: pointer;
 
     /* &:hover{
@@ -74,7 +72,7 @@ const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i
     }
 
     const alternarHidden = ()=>{
-        SetIsHidden(prev=>!prev)
+        SetIsHidden(anterior=>!anterior)
     }
 
     return(
@@ -86,7 +84,7 @@ const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i
                     
                     <li key={index}>
                         <button onClick={e => aoMudarFundo(e)} id={titulo}>
-                            <img id={titulo} src={`/icons/${titulo}-icon.png`} alt="" />
+                            <img id={titulo} src={`https://ia600608.us.archive.org/21/items/icons-pokeapi/${titulo}-icon.png`} alt="" />
                             <p id={titulo}>{titulo}</p>
                         </button>
                     </li>
