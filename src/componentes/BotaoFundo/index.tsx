@@ -57,7 +57,7 @@ const BotaoMenuEstilizado = styled.button`
     background-image: linear-gradient(to bottom, #D43B47,#A92F3A);
     border: none;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 10px;   
     cursor: pointer;
 
     /* &:hover{

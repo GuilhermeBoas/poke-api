@@ -5,6 +5,9 @@ const CabecalhoEstilizado = styled.header`
     border-radius: 0 0 24px 24px;
     display: flex;
     justify-content: center;
+    img{
+        width: 150px;
+    }
 `
 
 const Cabecalho = () =>{

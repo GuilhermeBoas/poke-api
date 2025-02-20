@@ -21,7 +21,7 @@ const ContainerWallpaper = styled.div`
 `
 //video ja ficar estatico alinhado com o vh, falta fazer reposividade do video e escolha
 
-const PapelDeParede = ({ fundos,classEscolhida }: { fundos: string[],classEscolhida:string }) => {
+const PapelDeParede = ({ fundos,classEscolhida }: { fundos: string[],classEscolhida:string|null}) => {
     return (
         <ContainerWallpaper>
 

@@ -8,6 +8,9 @@ const InfoEstilizada = styled.figcaption`
     border-radius: 10px;
     box-shadow: inset  0 0 5px #000;
     padding: 10px 7px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     
 `
 const TituloEstilizado = styled.h2<Cor>`
@@ -29,12 +32,13 @@ const Status = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
+    align-self: center;
 `
 const DivisãoStatus = styled.div`
     padding: 8px 10px 0 10px; 
     display:flex ;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     
     gap: 10px;
     width: 100%;
