@@ -1,7 +1,5 @@
 import { useState } from "react"
 import styled from "styled-components"
-import icon from "../../../public/icons/God-icon.png"
-
 const MenuContainer = styled.div`
     position: absolute;
     bottom: 0;
