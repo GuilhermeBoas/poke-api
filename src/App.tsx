@@ -73,7 +73,10 @@ function App() {
         <FormularioEstilizado
           onSubmit={(e) => {
             e.preventDefault();
-            setIdPokemon(inputValue.trim().replace(' ',''));
+            setIdPokemon(()=>(
+              inputValue.trim().replace(' ',''))
+              
+            );
             setInputlValue('')
           }}
         >
@@ -84,7 +87,6 @@ function App() {
             onChange={e => aoMudarInput(e)}
           />
         </FormularioEstilizado>
-
         <MainApp>
           
           <BotaoAvanca setIdPokemon={setIdPokemon} alt='back' imagem={back}/>

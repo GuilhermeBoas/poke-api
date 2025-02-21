@@ -98,7 +98,7 @@ const Card = ({ setIdEvolution, idPokemon, setIdPokemon }: { idPokemon: number |
         }).catch((error) => alert(`Something went wrong:   ${error}`));
     } // Solução: após fazer o .json() na response da api usar o json como o parametro e abrir uma arrow function com {} para usa-lo para fazer um novo fetch
     useEffect(() => { aoMudarPokemon(idPokemon); }, [idPokemon])
-    //1 - Criar um jeito de encaixar os dados em uma interface
+    //1 - Criar um jeito de encaixar os dados em uma interface;
     return (
 
         <PokemonContainer>
