@@ -10,6 +10,7 @@ import back from './assets/back.png'
 import BotaoAvanca from './componentes/BotaoAvanca'
 import CardEvolucao from './componentes/CardEvolucao'
 
+
 // Styled Components
 const ContainerPrincipal = styled.div`
   position: relative;

@@ -26,8 +26,7 @@ const PapelDeParede = ({ fundos, classEscolhida }: { fundos: string[], classEsco
 
     useEffect(() => {
         if (classEscolhida) {
-            // Define o caminho do vídeo diretamente
-            setVideoSrc(`/gif/${classEscolhida}.mp4`);
+            setVideoSrc(`https://ia904505.us.archive.org/32/items/god_20250222/${classEscolhida}.mp4`);
         }
     }, [classEscolhida]);
 
