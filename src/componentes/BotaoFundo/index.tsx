@@ -72,7 +72,7 @@ const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i
     }
 
     const alternarHidden = ()=>{
-        SetIsHidden(prev=>!prev)
+        SetIsHidden(anterior=>!anterior)
     }
 
     return(
@@ -84,7 +84,7 @@ const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i
                     
                     <li key={index}>
                         <button onClick={e => aoMudarFundo(e)} id={titulo}>
-                            <img id={titulo} src={`/icons/${titulo}-icon.png`} alt="" />
+                            <img id={titulo} src={`https://ia600608.us.archive.org/21/items/icons-pokeapi/${titulo}-icon.png`} alt="" />
                             <p id={titulo}>{titulo}</p>
                         </button>
                     </li>
