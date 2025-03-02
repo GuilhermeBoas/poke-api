@@ -7,6 +7,7 @@ const MenuContainer = styled.div`
     
     .hidden{
         display: none;
+        
     }
 
     ul{
@@ -29,7 +30,6 @@ const MenuContainer = styled.div`
         li{
             list-style: none;
             padding: 10px;
-            
             button{
                 background-color: transparent;
                 border: none;
@@ -50,7 +50,6 @@ const MenuContainer = styled.div`
         }
     }
 `
-
 const BotaoMenuEstilizado = styled.button`
     background-image: linear-gradient(to bottom, #D43B47,#A92F3A);
     border: none;
@@ -63,7 +62,12 @@ const BotaoMenuEstilizado = styled.button`
     } */
 `
 
-const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i:string)=>void})=>{
+interface BotaoFundoProps{
+    botoes:string[],
+    retornoAoClicar:(i:string)=>void
+}
+
+const BotaoFundo = ({botoes,retornoAoClicar}:BotaoFundoProps)=>{
     const [isHidden,SetIsHidden]= useState(false)
      
     const aoMudarFundo = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
@@ -76,7 +80,7 @@ const BotaoFundo = ({botoes,retornoAoClicar}:{botoes:string[],retornoAoClicar:(i
     }
 
     return(
-        <MenuContainer>
+        <MenuContainer onMouseLeave={()=>{SetIsHidden(anterior=>!anterior)}}>
             
             <ul className={isHidden?'':'hidden'}>
                 

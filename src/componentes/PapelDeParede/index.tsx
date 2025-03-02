@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-
+// estilos
 const PosiçãoDoPapelDePareda = styled.video`
     position: fixed;
     z-index: -5;
@@ -11,17 +11,31 @@ const PosiçãoDoPapelDePareda = styled.video`
         max-width: none;
         width: auto;
         height: 100%;
-        text-align: center;
+    }
+    @media (max-width: 800px) {
+        right: -50%;
+    }
+    @media (max-width: 600px) {
+        right: -70%;
+    }
+    @media (max-width: 470px) {
+        right: -100%;
+    }
+    @media (max-width: 360px) {
+        right: -130%;
     }
 `;
-
 const ContainerWallpaper = styled.div`
     .hidden {
         display: none;
     }
 `;
-
-const PapelDeParede = ({ fundos, classEscolhida }: { fundos: string[], classEscolhida: string | null }) => {
+//interfaces
+interface PapelDeParede{
+    fundos:string[],
+    classEscolhida:string|null
+}
+const PapelDeParede = ({ fundos,classEscolhida}: PapelDeParede) => {
     const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
     useEffect(() => {
@@ -51,3 +65,6 @@ const PapelDeParede = ({ fundos, classEscolhida }: { fundos: string[], classEsco
 };
 
 export default PapelDeParede;
+
+// 800 pxs- tablet
+// 320 pxs - celular

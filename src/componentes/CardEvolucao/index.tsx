@@ -55,13 +55,9 @@ const CardEvolucao = ({ idEvolution }: { idEvolution: string }) => {
             const idPokemon = json.chain.species.url.replace('https://pokeapi.co/api/v2/pokemon-species/', '').replace('/', '')
             sequenciaFinal.push({ nome: primeiroPoke, id: idPokemon })
 
-
-
             //fetch outros pokemons
             const listaEvolucoes = json.chain.evolves_to
             procurarMaisEvolucoes(listaEvolucoes, sequenciaFinal)
-            console.log(sequenciaFinal)
-
 
             setEvolutions(sequenciaFinal.map(pokemon => ({ url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`, nome: pokemon.nome })))
 

@@ -14,7 +14,6 @@ const Cabecalho = () =>{
     return(
         <CabecalhoEstilizado>
             <img src="/pokedex.png" alt="" />
-
         </CabecalhoEstilizado>
 
     )

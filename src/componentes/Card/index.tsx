@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Info from "./Info";
 import tipagemTipo from '../../interfaces-tipes';
 import tipagemAbilitis from '../../interfaces-tipes';
+import PokemonHeader from "./PokemonHeader";
 
 // Styled Components
 const PokemonContainer = styled.figure`
@@ -18,36 +19,12 @@ const PokemonContainer = styled.figure`
         border-radius: 10px;
         margin: 0;
     `
-const ImgPoke = styled.img`
-        width: 100%;
-        max-width: 200px;
-        height: 200px;
-    `
-const SemiCircle = styled.div<Cor>`
-        width: 100%;
-        max-width: 600px;
-        height: 200px;
-    
-        z-index: -1;
-        position: absolute;
-       
-        background-image: url('../../../Info/Pokeball.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 15px 15px  100% 100%;
-        background-color: ${({ $cor }) => `var(--${$cor}-color);`};
-    `
-const Tags = styled.div`
-        display: flex;
-        justify-content: center;
-        gap: 1em;    
-    `
-const Tag = styled.p<Cor>`
-        background-color: ${({ $cor }) => `var(--${$cor}-color)`};;
-        padding: 2px 8px;
-        border-radius: 10px;
-    `
 //interfaces
+interface CardProps{
+    idPokemon: number | string,
+    setIdPokemon: (value: React.SetStateAction<string | number>) => void,
+    setIdEvolution: React.Dispatch<React.SetStateAction<string>>
+}
 interface tipagemDadosPokemon {
     nome: string,
     imagem: string,
@@ -56,14 +33,9 @@ interface tipagemDadosPokemon {
     peso: number,
     altura: number,
     descricao: string,
-
-}
-interface Cor {
-    $cor: string
 }
 
-
-const Card = ({ setIdEvolution, idPokemon, setIdPokemon }: { idPokemon: number | string, setIdPokemon: (value: React.SetStateAction<string | number>) => void, setIdEvolution: React.Dispatch<React.SetStateAction<string>> }) => {
+const Card = ({ setIdEvolution, idPokemon, setIdPokemon }: CardProps) => {
 
     const [pokemon, setPokemon] = useState<tipagemDadosPokemon>({
         nome: '',
@@ -72,12 +44,11 @@ const Card = ({ setIdEvolution, idPokemon, setIdPokemon }: { idPokemon: number |
         abilities: [],
         peso: 0,
         altura: 0,
-        descricao: '',
-        
+        descricao: '',   
     })
 
     const aoMudarPokemon = (idDoPokemon: number | string) => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then((json) => {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${idDoPokemon}`).then(res => res.json()).then( (json) => {
             setIdPokemon(json.id);
 
             fetch(json.species.url).then(res => res.json()).then(speciesJson => {
@@ -96,19 +67,19 @@ const Card = ({ setIdEvolution, idPokemon, setIdPokemon }: { idPokemon: number |
                 })
             })
         }).catch((error) => alert(`Something went wrong:   ${error}`));
-    } // Solução: após fazer o .json() na response da api usar o json como o parametro e abrir uma arrow function com {} para usa-lo para fazer um novo fetch
+    } // após fazer o .json() no primeiro response da api usar o json como o parametro e abrir uma arrow function com {} para usa-lo para fazer um novo fetch
     useEffect(() => { aoMudarPokemon(idPokemon); }, [idPokemon])
-    //1 - Criar um jeito de encaixar os dados em uma interface;
+    
     return (
 
         <PokemonContainer>
-            <SemiCircle $cor={pokemon.tipo[0] ? pokemon.tipo[0].type.name : ''} />
 
-            <h1>{pokemon.nome}</h1>
-            <ImgPoke src={pokemon.imagem} />
-            <Tags>
-                {pokemon.tipo.map((tipo) => <Tag $cor={tipo.type.name} key={tipo.slot}>{tipo.type.name}</Tag>)}
-            </Tags>
+            <PokemonHeader 
+                tipo={pokemon.tipo}
+                nome={pokemon.nome}
+                imagem={pokemon.imagem}
+            />
+
 
             <Info
                 cor={pokemon.tipo[0] ? pokemon.tipo[0].type.name : 'grass'}
